@@ -4,8 +4,7 @@ import java.util.*;
 
 class Pokemon{
     //Base on Pokemon sword and shield ,2020 ,nintendo switch
-    private String;
-    protected String name;
+    private String, name;
     private String[] type = {"Bug", "Dark", "Dragon", "Electric", "Fairy", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Steel", "Water"};
     private int id,lv, hp, atk, def, speed, exp, expMax;
 
@@ -29,7 +28,7 @@ class Pokemon{
         this.id = id;
     }
 
-    public void setName(String name){
+    protected void setName(String name){
         this.name = name;
     }
 
