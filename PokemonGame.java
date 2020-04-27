@@ -1,11 +1,13 @@
+import java.util.*;
 import java.io.*;
 
 public class PokemonGame{
     public static void main(String[] args){
-        //Pokemon p1 = new Pokemon(); //ID 
-        Eevee p1 = new Eevee();
-        p1.setID(01);
-        p1.setName("Eevee");
-        p1.displayPokemon();
+        System.out.println("WELCOME TO Phonie's POKEMON GAME ! !");
+        Trainer t = new Trainer("Phonie");
+        new mainGame(t);              // activate GUI
+        //t.play();                       // play game
+        //System.out.println("End");
+    
     }
 }
