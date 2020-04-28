@@ -5,7 +5,7 @@ import java.util.*;
 public class Pikachu extends Pokemon{
     public Pikachu(String name){
         super(name);                                //name
-        hp =10+ (int)(Math.random()*100)+10;        // hp
+        hp =10+ (int)(Math.random()*100)+50;        // hp
         catchR = 10;
     }
     

@@ -4,7 +4,7 @@ public class Trainer {
     private ArrayList<Pokemon> bag;
     private ArrayList<Ball> pokeBag;                  // bag list
     private Scanner sc;
-    private String name, nickname;
+    protected String name, nickname;
 
 
     public Trainer(String name){
@@ -22,8 +22,7 @@ public class Trainer {
         return this.name;
     }
 
-    public String setNickName(){
-        nickname = sc.nextLine();
+    public String setNickName(String nickname){
         name = nickname;
         return name;
     }
@@ -32,7 +31,7 @@ public class Trainer {
         String cmd =  "";
        
         do{
-            System.out.print(" Type Command : (show/catch/restore/quit) : ");      //start game menu
+            System.out.print(" Type Command : (show/catch/quit) : ");      //start game menu
             cmd = sc.nextLine();
             if(cmd.equals("show")){
                 System.out.print(">> Pokemon right now ! <<\nPokemons in your bag \n\n");
@@ -49,7 +48,7 @@ public class Trainer {
     public void catchPokemon(){                                             // catch func.
         System.out.println("Catch ! ! ");   
         ArrayList<Pokemon> pokemons = PokemonRand.getPokemons(5);           //call PokemonRandom 
-        ArrayList<Ball> pokeBalls = PokeballRand.getPokemonballs(1);
+        ArrayList<Ball> pokeBalls = PokeballRand.getPokemonballs(2);
 
         System.out.println("Pokemon around you");
         int no = 0;
@@ -87,24 +86,33 @@ public class Trainer {
         }while(true);
 
         if(isWin){ 
-            String s = "";
-            if(wildPokemon.catchR < ballRand.chance){                                               //check isWin?catch:wild pokemon escape
-                System.out.println("You catch : "+ wildPokemon.getName());
-                System.out.println("Do you want to set Nickname? Y/N");
-                s = sc.nextLine(); 
-                if(s.equals("Y")){
-                    System.out.println("Set Nickname: ");
-                    setNickName();
-                    bag.add(pokemons.get(no));
-                }else
-                    bag.add(pokemons.get(no));
+            int n = (int)((Math.random() * 4) + 1);                                   //(int)((Math.random() * max-min) + min);
+            int ans ;
+            String s="";
+            if(myPoke.hp > wildPokemon.hp){                                               //check isWin?catch:wild pokemon escape
+                System.out.println("You win ! " + " you catch " + wildPokemon.getName());
+                
+                wildPokemon.name = setNickName(s);
+                
+                System.out.println("Gacha Restore!  choose 1-5");
+                ans = sc.nextInt(); 
+
+            if(ans == n){                                                               //gacha restore
+                System.out.println("Correct! restore x2");
+                restore(bag);
+                bag.add(pokemons.get(no));
+                
+            }else
+                System.out.println("Wrong");
+                restore(bag);
+                bag.add(pokemons.get(no));
+                
             }    
         }else
             System.out.println(wildPokemon.getName() + " won ");
 
-        sc.nextLine();
-
     }
+
     public void showPokemon(ArrayList<Pokemon> pokemons){                       //func for show pokemon name, hp
         int num = 0;
         for(Pokemon p:bag){
@@ -127,5 +135,10 @@ public class Trainer {
     public ArrayList<Ball> getBallBag(){
         return pokeBag;
     }
-    
+
+    public void restore(ArrayList<Pokemon> pokemons){                   //restore hp
+        for(Pokemon p:bag){
+            p.hp = p.getHp()*2;
+        }
+    }
 }

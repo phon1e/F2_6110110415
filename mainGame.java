@@ -3,11 +3,13 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.JTextField;
 
 public class mainGame extends JFrame{
 
     private Trainer trainer;
-    private Pokemon p;
+    private Pokemon pokemons;
+    protected String nName;
     JFrame window;
     Container con;
     JPanel titleNamePanel, startButtonPanel, mainPanel, mainPanel2, choiceButtonPanel;
@@ -16,12 +18,14 @@ public class mainGame extends JFrame{
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
     JButton startButton, quitButton, choice1, choice2, choice3, choice4, statButton ;                                        
     JTextArea mainTextArea, subTextArea;
+    
 
     TitleScreenHandler tsHandler = new TitleScreenHandler();        //creare title screenhandler for status menu
     public mainGame(Trainer trainer){
         super("Pokemon Game");
         this.trainer = trainer;
-        
+        this.pokemons = pokemons;
+        pokemonNameLabel = new JLabel();
         window = new JFrame();
         window.setSize(800, 600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +103,7 @@ public class mainGame extends JFrame{
         choiceButtonPanel.setLayout(new GridLayout(4, 1)); // set layout button position (y : x)
         con.add(choiceButtonPanel);
 
-        choice1 = new JButton("Pokemon's Status");      // button 1
+        choice1 = new JButton("Pokemon's Status ");      // button 1
         choice1.setBackground(Color.black);
         choice1.setForeground(Color.white);
         choice1.setFont(normalFont);
@@ -107,7 +111,7 @@ public class mainGame extends JFrame{
         choice1.setFocusPainted(false);         
         choice1.addActionListener(tsHandler);   
         
-        choice2 = new JButton("Catch some pokemon");
+        choice2 = new JButton("Nick Name");
         choice2.setBackground(Color.black);
         choice2.setForeground(Color.white);
         choice2.setFont(normalFont);
@@ -140,6 +144,8 @@ public class mainGame extends JFrame{
                 System.exit(0);                                 //close program
             else if(e.getSource() == choice1)
                 statusInfo();
+            else if(e.getSource() == choice2)
+                rename(nName);
             else if(e.getSource() == choice4){
                 back();
                 createGameScreen();
@@ -148,16 +154,20 @@ public class mainGame extends JFrame{
         }
     }
 
+    public void rename(String nName){
+        TextField tf = new TextField(nName);
+    }
+
     public void statusInfo(){     
-                              // status info of pokemon
+                                                            // status info of pokemon
         mainPanel.setVisible(false);                        // close recent items in current page
         choiceButtonPanel.setVisible(false);
         mainPanel2 = new JPanel();
         mainPanel2.setBounds(100, 100, 600, 250);
         mainPanel2.setBackground(Color.black);
         con.add(mainPanel2);
-
-        mainTextArea = new JTextArea("INFO\nTrainer Name: " + trainer.getName() +"\nPokemon Name: " + pokemonNameLabel);     // show player info
+        
+        mainTextArea = new JTextArea("INFO\nTrainer Name: " + this.trainer.getName());     // show player info
         mainTextArea.setBounds(100,100,600,150);
         mainTextArea.setBackground(Color.black);                  
         mainTextArea.setForeground(Color.white);
@@ -172,11 +182,13 @@ public class mainGame extends JFrame{
         statButton.addActionListener(tsHandler);
         statButton.setFocusPainted(false);
         statButton.addActionListener(new ActionListener(){
+            
             public void actionPerformed(ActionEvent e){
-                //PokemonStatus ps = new PokemonStatus()
+                PokemonStatus ps = new PokemonStatus(trainer.getBag().get(0));          //call pokemonstatus to show 
             }
         });
-        String pName = "Pokemon: \n";
+
+        String pName = "Pokemon: ";
         for(Pokemon p: trainer.getBag()){
             pName += p.getName() + ", ";
         }

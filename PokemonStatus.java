@@ -5,23 +5,26 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-import jdk.internal.platform.Container;
-
 public class PokemonStatus extends JFrame{          //create status panel
     Pokemon pokemon;
+    JButton lvlupButton;
+
     public PokemonStatus(Pokemon pokemon){
-        super("Pokemon Status:" + pokemon.getName());
+        super("Pokemon Status");
         this.pokemon = pokemon;
+        int lv = 1;
 
         Container c = getContentPane();
-        JLabel name = new JLabel(pokemon.getName());
-        JLabel hp = new JLabel("HP : "+pokemon.getHp());
-        
-        c.add(name);
-        c.add(hp);
+        JLabel info = new JLabel("Name : " +pokemon.getName() +" HP: "+ pokemon.getHp());
+        lvlupButton = new JButton("LEVEL UP");
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        c.add(lvlupButton);
+        c.add(info);
+        
+
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 200);
         setVisible(true);
+
     }
 }
