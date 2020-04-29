@@ -185,6 +185,10 @@ public class mainGame extends JFrame{
             
             public void actionPerformed(ActionEvent e){
                 PokemonStatus ps = new PokemonStatus(trainer.getBag().get(0));          //call pokemonstatus to show 
+                IconImage ic = new IconImage();
+                ic.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                ic.setVisible(true);
+                ic.setSize(180, 180);;
             }
         });
 

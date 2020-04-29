@@ -17,7 +17,7 @@ public class PokemonStatus extends JFrame{          //create status panel
         Container c = getContentPane();
         JLabel info = new JLabel("Name : " +pokemon.getName() +" HP: "+ pokemon.getHp());
         lvlupButton = new JButton("LEVEL UP");
-
+        
         c.add(lvlupButton);
         c.add(info);
         
