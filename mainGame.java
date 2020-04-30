@@ -111,7 +111,7 @@ public class mainGame extends JFrame{
         choice1.setFocusPainted(false);         
         choice1.addActionListener(tsHandler);   
         
-        choice2 = new JButton("Nick Name");
+        choice2 = new JButton("Nick Name");         //set nickname button
         choice2.setBackground(Color.black);
         choice2.setForeground(Color.white);
         choice2.setFont(normalFont);
@@ -119,7 +119,7 @@ public class mainGame extends JFrame{
         choice2.setFocusPainted(false);
         choice2.addActionListener(tsHandler);
         
-        choice3 = new JButton("Pokemon in Bag");
+        choice3 = new JButton("Pokemon in Bag");        
         choice3.setBackground(Color.black);
         choice3.setForeground(Color.white);
         choice3.setFont(normalFont);
@@ -184,8 +184,8 @@ public class mainGame extends JFrame{
         statButton.addActionListener(new ActionListener(){
             
             public void actionPerformed(ActionEvent e){
-                PokemonStatus ps = new PokemonStatus(trainer.getBag().get(0));          //call pokemonstatus to show 
-                IconImage ic = new IconImage();
+                PokemonStatus ps = new PokemonStatus(trainer.getBag().get(0));          //call pokemonstatus to display 
+                IconImage ic = new IconImage();                                         //call icon image to display
                 ic.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 ic.setVisible(true);
                 ic.setSize(180, 180);;

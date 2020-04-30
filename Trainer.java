@@ -27,7 +27,7 @@ public class Trainer {
         return name;
     }
 
-    public void play(){
+    public void play(){                                                     //play function
         String cmd =  "";
        
         do{
@@ -97,13 +97,13 @@ public class Trainer {
                 System.out.println("Gacha Restore!  choose 1-5");
                 ans = sc.nextInt(); 
 
-            if(ans == n){                                                               //gacha restore
-                System.out.println("Correct! restore x2");
+            if(ans == n){                                                               //gacha restore answer correct hpx2 wrong hpx1
+                System.out.println("Correct! restore x2");                                  
                 restore(bag);
                 bag.add(pokemons.get(no));
                 
             }else
-                System.out.println("Wrong");
+                System.out.println("Wrong");                                        
                 restore(bag);
                 bag.add(pokemons.get(no));
                 
@@ -121,14 +121,14 @@ public class Trainer {
         }
     }
 
-    public void showPokeball(ArrayList<Ball> pokeBalls){
+    public void showPokeball(ArrayList<Ball> pokeBalls){                    //show pokeball in bag
         int num = 0;
         for(Ball b:pokeBag){
             System.out.println("" + num +" " + b);
             num++;
         }
     }
-    public ArrayList<Pokemon> getBag(){
+    public ArrayList<Pokemon> getBag(){                             
         return bag;
     }
 

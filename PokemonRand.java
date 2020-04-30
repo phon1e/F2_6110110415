@@ -8,7 +8,7 @@ public class PokemonRand  {
         if(num<1){
             return pokemons;
         }
-        int pokemonNum = (int)(Math.random()*num)+2 ;           //rand pokemon
+        int pokemonNum = (int)(Math.random()*num)+3 ;           //rand pokemon
         
         for(int i=0; i<pokemonNum; ++i){
             int type = (int)(Math.random()*2);
@@ -18,6 +18,8 @@ public class PokemonRand  {
                 pokemons.add(new Evee("wild Evee"));
             }else if(type == 2){
                 pokemons.add(new Raichu("Raichu"));
+            }else if(type == 3){
+                pokemon.add(new Rattata("Rattata"));
             }
         }
         return pokemons;

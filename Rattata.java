@@ -2,10 +2,10 @@ import java.io.*;
 import java.lang.Math;
 import java.util.*;
 
-public class Pikachu extends Pokemon{
-    public Pikachu(String name){
+public class Rattata extends Pokemon{
+    public Rattata(String name){
         super(name);                                //name
-        hp =10+ (int)(Math.random()*100)+50;        // hp
+        hp =10+ (int)(Math.random()*100)+30;        // hp
         catchR = 10;
     }
     
